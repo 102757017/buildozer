@@ -1,0 +1,184 @@
+<MYLabel@MDLabel>
+    size_hint_x: 0.3
+    size_hint_y: None
+    pos_hint: {"left": 1, "center_y": .5}
+    height: self.texture_size[1]
+    font_style: "Body2"
+    halign: "left"
+
+
+<MYDropDownItem@MDDropDownItem>
+    text: ""
+    font_style: "Body2"
+    pos_hint: {"right":1, "center_y": .5}
+    size_hint_x: 0.7
+
+
+<EnterNgIfo>
+    name: "input_nginfo1"
+    title: "扫码录入不良信息"
+
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "10dp"
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            adaptive_height: True
+            spacing: "10dp"
+            pos_hint: {"center_x": .5}
+
+            MYLabel:
+                text: "产品条码/标签："
+                
+                
+            MDRectangleFlatButton:
+                id:Lot1
+                text: '点击扫码'  
+                size_hint_x: 0.7
+                on_press: app.start_cam()
+                on_text: root.decode(self.text)
+                
+        
+        MDBoxLayout:
+            orientation: "horizontal"
+            adaptive_height: True
+            spacing: "10dp"
+            pos_hint: {"center_x": .5}
+
+            MYLabel:
+                text: "产品类型："
+
+            MYLabel:
+                id: PartType1
+                size_hint_x: 0.7
+
+
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            adaptive_height: True
+            spacing: "10dp"
+            pos_hint: {"center_x": .5}
+
+            MYLabel:
+                text: "WICO番号："
+
+            MYLabel:
+                id: WicoPartNumber1
+                size_hint_x: 0.7
+
+
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            adaptive_height: True
+            spacing: "10dp"
+            pos_hint: {"center_x": .5}
+
+            MYLabel:
+                text: "TS-GSK番号："
+
+            MYLabel:
+                id: TsPartNumber1
+                size_hint_x: 0.7
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            adaptive_height: True
+            spacing: "10dp"
+            pos_hint: {"center_x": .5}
+
+            MYLabel:
+                text: "产品名称："
+
+            MYLabel:
+                id: PartName1
+                size_hint_x: 0.7
+
+        AsyncImage:
+            id: part_image
+            size_hint_y:0.3
+            source:"https://gitee.com/sunny_ho/image_bed/raw/master/wico/wico.jpg"
+            size:self.texture_size
+
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            adaptive_height: True
+            spacing: "10dp"
+            pos_hint: {"center_x": .5}
+
+            MYLabel:
+                text: "机种："
+
+            MYDropDownItem:
+                id: CarModel1
+                on_release: root.show_model1()
+                
+        MDBoxLayout:
+            orientation: "horizontal"
+            adaptive_height: True
+            spacing: "10dp"
+            pos_hint: {"center_x": .5}
+
+            MYLabel:
+                text: "座椅型号："
+
+            MYDropDownItem:
+                id: SeatModel1
+                on_release: root.show_SeatModel1() 
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            adaptive_height: True
+            spacing: "10dp"
+            pos_hint: {"center_x": .5}
+
+            MYLabel:
+                text: "不良内容："
+
+            MDTextField:
+                id: NgInfo1
+                hint_text: "选单内没有时手动输入"
+                size_hint_x: 0.7
+                
+            MDIconButton:
+                pos_hint: {"center_x": .5, "center_y": .5}
+                icon: "plus"
+                on_release: root.show_ng_information1()
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            adaptive_height: True
+            spacing: "10dp"
+            pos_hint: {"center_x": .5}
+
+            MYLabel:
+                text: "维修方法："
+
+            MDTextField:
+                id: RepairMethod1
+                text:""
+                hint_text: "选单内没有时手动输入"
+                size_hint_x: 0.7
+                
+            MDIconButton:
+                pos_hint: {"center_x": .5, "center_y": .5}
+                icon: "plus"
+                on_release: root.show_repair_method1()
+            
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint_y: 0.1
+
+
+            AnchorLayout:
+                size_hint_y: None
+                height: "32dp"
+                anchor_x: "center"
+                callback: None
+                MDRaisedButton:
+                    text: "提交"
+                    on_release: root.upload()
+                    pos_hint: { "center_y": .5}

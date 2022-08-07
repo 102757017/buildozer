@@ -1,0 +1,71 @@
+<OutPutInfo>
+    name: "customer_output"
+    title: "客户产量信息"
+
+
+    BoxLayout:
+        orientation: "vertical"
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: 0.2
+
+            
+            #:import datetime datetime
+            Label:
+                id:date
+                text:datetime.datetime.strftime(datetime.datetime.now()-datetime.timedelta(hours=8), "%Y-%m-%d")
+                color:.9,.2,.1,1   #字体颜色
+                size_hint_y: 0.4
+
+            BoxLayout:
+                orientation: "horizontal"
+                            
+                Button:
+                    text:"机种"
+                    font_name:"DroidSansFallback.ttf"
+                    size_hint_x: 0.1
+                Button:
+                    text:"座椅型号"
+                    font_name:"DroidSansFallback.ttf"
+                    size_hint_x: 0.5
+                Button:
+                    text:"白班\n产量"
+                    font_name:"DroidSansFallback.ttf"
+                    size_hint_x: 0.2
+                Button:
+                    text:"夜班\n产量"
+                    font_name:"DroidSansFallback.ttf"
+                    size_hint_x: 0.2
+
+        BoxLayout:
+            id:quantity
+            orientation: "vertical"
+            size_hint_y: 0.9
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: 0.1
+
+            AnchorLayout:
+                size_hint_y: None
+                height: "32dp"
+                anchor_x: "center"
+                text: ""
+                callback: None
+                MDRaisedButton:
+                    text: "新增"
+                    on_release: root.add_quantity()
+                    pos_hint: { "center_y": .55}
+
+            AnchorLayout:
+                size_hint_y: None
+                height: "32dp"
+                anchor_x: "center"
+                text: ""
+                callback: None
+                MDRaisedButton:
+                    id:submit
+                    text: "提交"
+                    on_release: root.upload_volume()
+                    pos_hint: { "center_y": .55}

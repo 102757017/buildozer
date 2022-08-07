@@ -1,0 +1,40 @@
+<CameraScreen>:
+    name: 'camera'
+
+    BoxLayout:
+        orientation: "vertical"
+
+        MDLabel:
+            #size: self.texture_size[0], 50
+            size_hint_y: 0.1
+            font_name:"DroidSansFallback.ttf"
+            text: "条形码必须水平方向或垂直方向扫描，二维码任意方向均可扫描"
+
+        MDBoxLayout:
+            id:container
+            orientation: "horizontal"
+            pos_hint: {"center_x": .5}
+
+
+            #:import QRReader qrreader.QRReader
+            QRReader:
+                id: qrreader
+                # optional, by default checks all types
+                #code_types: ZBarSymbol.CODE128,ZBarSymbol.QRCODE
+                #这里的分辨率必须填写手机摄像头支持的分辨率，随便填会导致在电脑上可以运行，但是手机app闪退
+                letterbox_color: 'steelblue'
+                aspect_ratio: '4:3'
+    
+        MDLabel:
+            id:barcode
+            size_hint_y: 0.1
+            #size: self.texture_size[0], 50
+            text: qrreader.Data.lot
+            on_text: app.goback2(self.text)
+
+
+        MDRectangleFlatButton:
+            text: 'Back'
+            pos_hint: {'center_x':0.5,'center_y':0.3}
+            size_hint_y: 0.1
+            on_press: app.goback()

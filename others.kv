@@ -1,0 +1,57 @@
+#:import Thread threading.Thread
+
+<Others>
+    name:"others"
+    title: "其它"
+
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "10dp"
+        pos_hint: {"top": 1}
+        size_hint_y: 0.5
+
+        MDLabel:
+            id:content
+            text: "若发现APP有bug，或有改善建议，请在此反馈"
+            size_hint_x: 0.9
+            size_hint_y: None
+            pos_hint: {"center_x": .5}
+            height: self.texture_size[1]
+            halign: "left"
+
+        TextInput:
+            id: advice
+            mode: "rectangle"
+            size_hint_x: 0.9
+            pos_hint: {"center_x": .5}
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            adaptive_height: True
+            spacing: "10dp"
+            pos_hint: {"center_x": .5}
+            size_hint_x: 0.9
+
+            MDRaisedButton:
+                id:submit_advice
+                text: "提交建议"
+                on_release: Thread(target=root.send_mail).start()
+
+
+            MDRaisedButton:
+                id:submit_database
+                text: "提交本机数据库（管理员debug时使用）"
+                on_release: Thread(target=root.send_database).start()
+
+
+
+    BoxLayout:
+        size_hint_y: 0.2 #占用20%的水平空间
+        orientation: "horizontal" 
+        MDLabel:
+            text: "作者：何威      EMAIL:hewei@imasenwh.com"
+            pos_hint: {'right': 1}
+            size_hint_x: 0.9
+            size_hint_y: None
+            height: self.texture_size[1]
+            halign: "right"

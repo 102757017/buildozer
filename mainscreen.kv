@@ -1,0 +1,24 @@
+#:include enterngifo.kv
+#:include outputinfo.kv
+#:include manual_input.kv
+#:include others.kv
+#: import gch kivy.utils.get_color_from_hex
+
+
+<MainScreen>:
+    name: 'main'
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "10dp"
+
+        MDTabs:
+            id: tab
+            background_color: gch("#5D1049")
+            text_color_normal: 1., 1., 1., .5
+            text_color_active: 1, 1, 1, 1
+            indicator_color: 1, 1, 1, 1
+            tab_indicator_type: "line-round"
+            tab_indicator_anim: True
+            tab_hint_x: True
+            lock_swiping:True
+            on_tab_switch: root.on_tab_switch(*args)
