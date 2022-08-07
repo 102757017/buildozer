@@ -38,15 +38,7 @@ version = 0.1
 #指定版本时需要明确完整版本号，例如python3==3.8.10,python3=3.8，python3>=3.8.10都是不行的
 #这里只能放入纯python的模块，如果有依赖C的模块，要看recipe清单中有无支持(https://github.com/kivy/python-for-android/tree/develop/pythonforandroid/recipes)，
 #将对应的项目拷贝到./p4a-recipes文件夹后再在requirements中添加依赖
-requirements = python3, \
-               kivy==2.1.0, \
-               git+https://github.com/102757017/KivyMD.git@master, \
-               pillow, \
-               certifi, \
-               pyzbar, \
-               mysql_connector, \
-               camera4kivy, \
-               gestures4kivy
+requirements = python3,kivy==2.1.0,git+https://github.com/102757017/KivyMD.git@master,pillow,certifi,pyzbar,mysql_connector,camera4kivy,gestures4kivy
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = all
