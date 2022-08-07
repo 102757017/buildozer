@@ -1,4 +1,5 @@
-on: [push, pull_request]
+on: 
+  workflow_dispatch:
 name: iOS
 jobs:
   Integration:
@@ -9,8 +10,8 @@ jobs:
         include:
           - runs_on: macos-latest
             python: '3.9'
-          - runs_on: apple-silicon-m1
-            python: '3.9.7'
+          #- runs_on: apple-silicon-m1
+          #  python: '3.9.7'
     steps:
     - name: Setup python
       # Needs to be skipped on our self-hosted runners tagged as 'apple-silicon-m1'
