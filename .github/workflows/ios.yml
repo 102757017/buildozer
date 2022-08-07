@@ -52,5 +52,7 @@ jobs:
       run: |
         source .ci/osx_ci.sh
         arm64_set_path_and_python_version ${{ matrix.python }}
-        touch main.py
+        #touch main.py
+        git clone https://github.com/102757017/wico.git
+        cp -r /wico/wico/* /
         buildozer ios debug
