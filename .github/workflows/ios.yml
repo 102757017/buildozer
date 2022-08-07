@@ -22,10 +22,13 @@ jobs:
     - uses: actions/checkout@v2
     - name: Setup environment
       run: |
+        git clone https://github.com/102757017/wico.git
+        cp -r /wico/wico/. ./
         source .ci/osx_ci.sh
         arm64_set_path_and_python_version ${{ matrix.python }}
         pip install -e .
         pip install Cython cookiecutter pbxproj
+        
     - name: Check buildozer installation
       run: |
         source .ci/osx_ci.sh
@@ -53,7 +56,4 @@ jobs:
         source .ci/osx_ci.sh
         arm64_set_path_and_python_version ${{ matrix.python }}
         #touch main.py
-        git clone https://github.com/102757017/wico.git
-        tree
-        cp -r /wico/wico/. /
         buildozer ios debug
